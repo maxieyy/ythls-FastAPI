@@ -5,7 +5,7 @@ from Core   import Request, kekik_cache, HTTPException
 from ..Libs import SineWixDB
 
 @sinewix_router.get("/search/{metin}")
-@kekik_cache(ttl=6 * 60 * 60, is_fastapi=True)
+@kekik_cache(ttl=6 * 60 * 60)
 async def search(request: Request, metin: str):
     try:
         sinewixdb = SineWixDB()
