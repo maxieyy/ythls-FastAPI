@@ -1,0 +1,1 @@
+Kekik cache decorators in this router package use ttl-only syntax because the installed kekik_cache API does not accept is_fastapi.
