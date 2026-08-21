@@ -11,7 +11,7 @@ oxax_global_message = {
 }
 
 @oxax_router.get("")
-@kekik_cache(ttl=CACHE_TIME, is_fastapi=True)
+@kekik_cache(ttl=CACHE_TIME)
 async def get_oxax_router(request: Request):
     return oxax_global_message
 
