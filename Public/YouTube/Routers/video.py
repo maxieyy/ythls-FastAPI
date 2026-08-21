@@ -15,7 +15,7 @@ async def get_video_hls(request: Request, id: str):
     return RedirectResponse(stream_url)
 
 @youtube_router.get("/video/{id}.json")
-@kekik_cache(ttl=CACHE_TIME, is_fastapi=True)
+@kekik_cache(ttl=CACHE_TIME)
 async def get_video_json(request: Request, id: str):
     yt_data = await youtube.video2data(id)
     if not yt_data:

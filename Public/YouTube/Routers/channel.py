@@ -15,7 +15,7 @@ async def get_channel_hls(request: Request, id: str):
     return RedirectResponse(stream_url)
 
 @youtube_router.get("/channel/{id}.json")
-@kekik_cache(ttl=CACHE_TIME, is_fastapi=True)
+@kekik_cache(ttl=CACHE_TIME)
 async def get_channel_json(request: Request, id: str):
     yt_data = await youtube.kanal2data(id)
     if not yt_data:
