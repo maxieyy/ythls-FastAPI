@@ -23,7 +23,7 @@ class YouTube:
         if not baslik:
             return {}
 
-        if id_regex := findall(r'"liveStreamabilityRenderer":{"videoId":"([^"]+)"', kaynak_kod):
+        if id_regex := findall(r'"liveStreamabilityRenderer":\{"videoId":"([^"]+)"', kaynak_kod):
             video_id = id_regex[0]
         else:
             try:
@@ -31,12 +31,12 @@ class YouTube:
             except IndexError:
                 return {}
 
-        if author_regex := findall(r'"pageOwnerDetails":{"name":"([^"]+)"', kaynak_kod):
+        if author_regex := findall(r'"pageOwnerDetails":\{"name":"([^"]+)"', kaynak_kod):
             author_name = author_regex[0]
         else:
             author_name = secici.xpath("//link[@itemprop='name']/@content").get()
 
-        if m3u8_regex := findall(r'(?<="hlsManifestUrl":").*\.m3u8', kaynak_kod):
+        if m3u8_regex := findall(r'"hlsManifestUrl"\s*:\s*"([^"]+\.m3u8)"', kaynak_kod):
             m3u8_url = m3u8_regex[0]
         else:
             m3u8_url = None
@@ -44,7 +44,7 @@ class YouTube:
         konsol.print(f"\n[yellow]{author_name} | {baslik}")
 
         try:
-            author_logo = findall(r'channelAvatar":{"thumbnails":\[{"url":"(https://[^"]+)"', kaynak_kod)[0]
+            author_logo = findall(r'channelAvatar\":{\"thumbnails\":\[{\"url\":\"(https://[^\"]+)', kaynak_kod)[0]
         except IndexError:
             author_logo = None
 
