@@ -1,1 +1,0 @@
-Temporary compatibility note: the current Kekik.cache.kekik_cache API does not accept is_fastapi=True. SineWix router decorators use ttl only.
