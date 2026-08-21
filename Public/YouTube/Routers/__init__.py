@@ -17,7 +17,7 @@ youtube_global_message = {
 }
 
 @youtube_router.get("")
-@kekik_cache(ttl=CACHE_TIME, is_fastapi=True)
+@kekik_cache(ttl=CACHE_TIME)
 async def get_youtube_router(request: Request):
     return youtube_global_message
 
