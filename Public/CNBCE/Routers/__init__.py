@@ -11,7 +11,7 @@ cnbce_global_message = {
 }
 
 @cnbce_router.get("")
-@kekik_cache(ttl=CACHE_TIME, is_fastapi=True)
+@kekik_cache(ttl=CACHE_TIME)
 async def get_cnbce_router(request: Request):
     return cnbce_global_message
 
