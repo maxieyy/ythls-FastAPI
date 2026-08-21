@@ -5,7 +5,7 @@ from Core   import Request, kekik_cache, HTTPException
 from ..Libs import SineWixDB
 
 @sinewix_router.get("/anime/{anime_id}")
-@kekik_cache(ttl=6 * 60 * 60, is_fastapi=True)
+@kekik_cache(ttl=6 * 60 * 60)
 async def get_anime(request: Request, anime_id: str):
     try:
         sinewixdb = SineWixDB()
@@ -17,7 +17,7 @@ async def get_anime(request: Request, anime_id: str):
         raise HTTPException(status_code=410, detail=f"{type(hata).__name__} » {hata}") from hata
 
 @sinewix_router.get("/animes/{sayfa}")
-@kekik_cache(ttl=6 * 60 * 60, is_fastapi=True)
+@kekik_cache(ttl=6 * 60 * 60)
 async def get_animes(request: Request, sayfa: str):
     try:
         sinewixdb = SineWixDB()
@@ -29,7 +29,7 @@ async def get_animes(request: Request, sayfa: str):
         raise HTTPException(status_code=410, detail=f"{type(hata).__name__} » {hata}") from hata
 
 @sinewix_router.get("/animes/{genre_id}/{sayfa}")
-@kekik_cache(ttl=6 * 60 * 60, is_fastapi=True)
+@kekik_cache(ttl=6 * 60 * 60)
 async def get_animes_genre(request: Request, genre_id:str, sayfa: str):
     try:
         sinewixdb = SineWixDB()
